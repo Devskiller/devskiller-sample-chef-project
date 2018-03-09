@@ -1,0 +1,13 @@
+source 'https://rubygems.org'
+
+gem 'rspec'
+gem 'berkshelf'
+gem 'chefspec'
+gem 'rake'
+gem 'chef'
+gem 'chef-dk'
+gem 'foodcritic'
+gem 'rubocop'
+gem 'test-kitchen'
+gem 'kitchen-docker'
+gem 'ci_reporter_rspec'

@@ -1,0 +1,29 @@
+require 'ci/reporter/rake/rspec'
+
+ENV['CI_REPORTS'] = 'reports'
+
+namespace :style do
+  begin
+    require 'foodcritic'
+
+    desc 'Run Chef style checks'
+    FoodCritic::Rake::LintTask.new(:chef) do |t|
+      t.options = {
+        progress: false,
+      }
+    end
+  rescue LoadError
+    puts ">>> Gem load error: #{e}, omitting style:chef" unless ENV['CI']
+  end
+end
+
+begin
+  require 'rspec/core/rake_task'
+
+  desc 'Run ChefSpec examples'
+  RSpec::Core::RakeTask.new(:spec)
+rescue LoadError => e
+  puts ">>> Gem load error: #{e}, omitting spec" unless ENV['CI']
+end
+
+task default: %w(style spec)

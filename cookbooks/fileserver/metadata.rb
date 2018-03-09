@@ -1,0 +1,5 @@
+name 'fileserver'
+maintainer 'Devskiller'
+maintainer_email 'noreply@devskiller.com'
+license 'All Rights Reserved'
+version '0.1.0'
